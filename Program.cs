@@ -1,3 +1,6 @@
+using RestaurantRaterAPI;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,3 +26,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+builder.Services.AddDbContext<RestaurantDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
